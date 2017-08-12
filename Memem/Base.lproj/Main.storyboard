@@ -39,28 +39,41 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-sP-mfk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-hr-NxL">
-                                <rect key="frame" x="49" y="28" width="284" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="cgi-c8-xsg">
+                                <rect key="frame" x="16" y="572" width="343" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-hr-NxL">
+                                <rect key="frame" x="16" y="42" width="343" height="17"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cgi-c8-xsg" secondAttribute="trailing" constant="16" id="04q-Wi-gJR"/>
+                            <constraint firstItem="cgi-c8-xsg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="9B4-A6-LA3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tqf-aw-Grr" secondAttribute="bottom" id="AZN-TZ-Ghk"/>
                             <constraint firstItem="Tqf-aw-Grr" firstAttribute="top" secondItem="dSa-sP-mfk" secondAttribute="bottom" id="CNb-2h-LHh"/>
+                            <constraint firstItem="Tqf-aw-Grr" firstAttribute="top" secondItem="cgi-c8-xsg" secondAttribute="bottom" constant="34" id="FOc-gN-gEi"/>
+                            <constraint firstItem="Mfo-hr-NxL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="22" id="LCw-S0-qVy"/>
                             <constraint firstAttribute="trailing" secondItem="dSa-sP-mfk" secondAttribute="trailing" id="RxF-1m-1tR"/>
                             <constraint firstItem="Tqf-aw-Grr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Y1C-E4-wfM"/>
                             <constraint firstItem="dSa-sP-mfk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cNK-ZV-WHT"/>
+                            <constraint firstAttribute="trailing" secondItem="Mfo-hr-NxL" secondAttribute="trailing" constant="16" id="e9C-3c-bB1"/>
+                            <constraint firstItem="Mfo-hr-NxL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="ri6-wO-xoK"/>
                             <constraint firstItem="dSa-sP-mfk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="stT-bE-uNA"/>
                             <constraint firstAttribute="trailing" secondItem="Tqf-aw-Grr" secondAttribute="trailing" id="v2h-Or-uoq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomText" destination="cgi-c8-xsg" id="WEL-bY-aMT"/>
                         <outlet property="cameraButton" destination="xWl-P2-1lo" id="5tp-7P-js7"/>
                         <outlet property="imagePickerView" destination="dSa-sP-mfk" id="qDs-3Y-Kg7"/>
+                        <outlet property="topText" destination="Mfo-hr-NxL" id="h6G-Il-cVb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

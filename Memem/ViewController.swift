@@ -8,15 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    
     @IBOutlet weak var imagePickerView: UIImageView!
+    @IBOutlet weak var topText: UITextField!
+    @IBOutlet weak var bottomText:UITextField!
     
     let memeTextAttributes:[String:Any] = [
-        NSStrokeColorAttributeName:UIColor.white,
+        NSStrokeColorAttributeName:UIColor.black,
         NSForegroundColorAttributeName:UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: 1.0
@@ -25,17 +26,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        //align text
+        topText.textAlignment = .center
+        bottomText.textAlignment = .center
+        
+        topText.delegate = self
+        bottomText.delegate = self
+        
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+        
+        topText.defaultTextAttributes = memeTextAttributes
+        bottomText.defaultTextAttributes = memeTextAttributes
     }
 
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        super.viewWillAppear(true)
+        //subscribeToKeyboardNotifications()
+
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     @IBAction func launchPicker(_ sender: Any){
         
@@ -69,11 +81,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             dismiss(animated: true, completion: nil)
         }
         
-    
-        
-        
     }
-
+    
+  
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+       
+        textField.text = ""
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 
