@@ -30,6 +30,7 @@
                                             <action selector="launchPicker:" destination="BYZ-38-t0r" id="bMQ-s2-FdG"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ANv-qx-sR2"/>
                                     <barButtonItem systemItem="camera" id="xWl-P2-1lo">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="UFX-PR-gDc"/>
@@ -87,6 +88,7 @@
                         <outlet property="bottomText" destination="cgi-c8-xsg" id="WEL-bY-aMT"/>
                         <outlet property="cameraButton" destination="xWl-P2-1lo" id="5tp-7P-js7"/>
                         <outlet property="imagePickerView" destination="dSa-sP-mfk" id="qDs-3Y-Kg7"/>
+                        <outlet property="shareButton" destination="BF8-0g-GSr" id="Fpc-5F-mUH"/>
                         <outlet property="topText" destination="Mfo-hr-NxL" id="h6G-Il-cVb"/>
                     </connections>
                 </viewController>

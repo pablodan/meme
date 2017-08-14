@@ -16,12 +16,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText:UITextField!
 
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+
     var meme = Meme()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTextField()
+        shareButton.isEnabled = false
         
     }
 
@@ -36,6 +39,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
         super.viewWillDisappear(true)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    func manageShareButton () {
+       
+      shareButton.isEnabled = true
     }
     
     func setupTextField()
@@ -100,6 +108,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
+        
         present(imagePicker, animated: true, completion: nil)
         
     }
@@ -133,6 +142,8 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.contentMode = .scaleAspectFit
             imagePickerView.image = image
+            //set share button once image is selected
+            shareButton.isEnabled = true
 
             dismiss(animated: true, completion: nil)
         }
