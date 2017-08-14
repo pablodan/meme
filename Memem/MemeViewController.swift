@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -21,24 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topText.delegate = self
-        bottomText.delegate = self
-        
-        let memeTextAttributes:[String:Any] = [
-            NSStrokeColorAttributeName:UIColor.black,
-            NSForegroundColorAttributeName:UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: -2.0
-        ]
-        
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-        
-        topText.textAlignment = NSTextAlignment.center
-        bottomText.textAlignment = NSTextAlignment.center
-        
-        
-        
+        setupTextField()
         
     }
 
@@ -54,6 +37,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(true)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    func setupTextField()
+    {
+        topText.delegate = self
+        bottomText.delegate = self
+        
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName:UIColor.black,
+            NSForegroundColorAttributeName:UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: -2.0
+        ]
+        
+        topText.defaultTextAttributes = memeTextAttributes
+        bottomText.defaultTextAttributes = memeTextAttributes
+        topText.textAlignment = NSTextAlignment.center
+        bottomText.textAlignment = NSTextAlignment.center
+    }
 
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -64,7 +65,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func unsubscribeFromKeyboardNotifications() {
         
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
@@ -82,20 +82,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func keyboardWillHide(_ notification: Notification) {
         view!.frame.origin.y = 0
-
     }
     
     @IBAction func launchPicker(_ sender: Any){
         
         let imagePicker = UIImagePickerController()
-        
          imagePicker.delegate = self
          imagePicker.allowsEditing = true
          imagePicker.sourceType = .photoLibrary
-        
+    
          present(imagePicker, animated: true, completion: nil)
-
-        
     }
     
     
@@ -157,11 +153,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-       
         textField.text = ""
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+       
         textField.resignFirstResponder()
         return true
     }
