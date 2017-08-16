@@ -6,7 +6,7 @@
 //  Copyright © 2017 Paul Omeally. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 struct Meme
