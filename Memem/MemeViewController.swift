@@ -15,7 +15,9 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var topText: UITextField!
     @IBOutlet weak var bottomText:UITextField!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!    
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var topToolbar: UIToolbar!
 
     var meme = Meme()
     
@@ -44,6 +46,18 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func manageShareButton ()
     {
         shareButton.isEnabled = true
+    }
+    
+    func hideToolBar()
+    {
+        bottomToolbar.isHidden = true
+        topToolbar.isHidden = true
+    }
+    
+    func showToolbar()
+    {
+        bottomToolbar.isHidden = false
+        topToolbar.isHidden = false
     }
     
     func setupTextField(textField: UITextField, text: String )
@@ -82,7 +96,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat
     {
-        
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue //of CGRect
         return keyboardSize.cgRectValue.height
@@ -149,11 +162,14 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func generatedMemedImage() -> UIImage
     {
+        //hide toolbar
+         hideToolBar()
         //render view to an image
          UIGraphicsBeginImageContext(self.view.frame.size)
          view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
          let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
          UIGraphicsEndImageContext()
+         showToolbar()
         
          return memedImage
     }

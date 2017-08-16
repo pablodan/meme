@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqf-aw-Grr">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqf-aw-Grr" userLabel="bottomToolbar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="organize" id="bmz-za-EW0">
@@ -47,7 +47,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-Ma-aId">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-Ma-aId" userLabel="topToolbar">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="BF8-0g-GSr">
@@ -86,10 +86,12 @@
                     </view>
                     <connections>
                         <outlet property="bottomText" destination="cgi-c8-xsg" id="WEL-bY-aMT"/>
+                        <outlet property="bottomToolbar" destination="Tqf-aw-Grr" id="LfE-QY-k5r"/>
                         <outlet property="cameraButton" destination="xWl-P2-1lo" id="5tp-7P-js7"/>
                         <outlet property="imagePickerView" destination="dSa-sP-mfk" id="qDs-3Y-Kg7"/>
                         <outlet property="shareButton" destination="BF8-0g-GSr" id="Fpc-5F-mUH"/>
                         <outlet property="topText" destination="Mfo-hr-NxL" id="h6G-Il-cVb"/>
+                        <outlet property="topToolbar" destination="b6e-Ma-aId" id="oT3-e8-zHQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
