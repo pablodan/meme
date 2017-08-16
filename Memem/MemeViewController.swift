@@ -19,8 +19,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var topToolbar: UIToolbar!
 
-    var meme = Meme()
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -126,12 +124,12 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
     func saveMeme (_ image: UIImage)
     {
-        meme.originalImage = imagePickerView.image!
-        meme.savedMeme = image
+        _ = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image, savedMeme: image)
     }
-    
+
     @IBAction func shareMeme (_ sender: Any)
     {
         let image = generatedMemedImage()
