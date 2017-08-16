@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeViewController
 //  Memem
 //
 //  Created by Paul Omeally on 8/8/17.
@@ -60,8 +60,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func setupTextField(textField: UITextField, text: String )
     {
-        topText.delegate = self
-        bottomText.delegate = self
+        textField.delegate = self
         
         let memeTextAttributes:[String:Any] = [
             NSStrokeColorAttributeName:UIColor.black,
@@ -89,7 +88,15 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func keyboardWillShow(_ notification: Notification)
     {
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if bottomText.isFirstResponder
+        {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
+    }
+    
+    func keyboardWillHide(_ notification: Notification)
+    {
+        view!.frame.origin.y = 0
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat
@@ -97,11 +104,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue //of CGRect
         return keyboardSize.cgRectValue.height
-    }
-    
-    func keyboardWillHide(_ notification: Notification)
-    {
-        view!.frame.origin.y = 0
     }
     
     @IBAction func launchPicker(_ sender: Any)
