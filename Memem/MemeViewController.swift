@@ -46,17 +46,13 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         shareButton.isEnabled = true
     }
     
-    func hideToolBar()
+    func configureToolBars(hiddenStatus: Bool)
     {
-        bottomToolbar.isHidden = true
-        topToolbar.isHidden = true
+        bottomToolbar.isHidden = hiddenStatus
+        topToolbar.isHidden = hiddenStatus
+
     }
     
-    func showToolbar()
-    {
-        bottomToolbar.isHidden = false
-        topToolbar.isHidden = false
-    }
     
     func setupTextField(textField: UITextField, text: String )
     {
@@ -163,13 +159,13 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func generatedMemedImage() -> UIImage
     {
         //hide toolbar
-         hideToolBar()
+        configureToolBars(hiddenStatus: true)
         //render view to an image
          UIGraphicsBeginImageContext(self.view.frame.size)
          view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
          let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
          UIGraphicsEndImageContext()
-         showToolbar()
+         configureToolBars(hiddenStatus: false)
         
          return memedImage
     }
